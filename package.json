@@ -1,0 +1,11 @@
+{
+  "name": "products-bootstraper",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node products_bootstraper.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "pg": "^8.10.0"
+  }
+}
