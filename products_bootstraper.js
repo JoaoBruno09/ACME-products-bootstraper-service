@@ -72,9 +72,12 @@ async function createRPCQueueAndListener() {
     const channel = await connection.createChannel();
     // Set up a queue to receive messages
     const queue = 'rpc_products_queue';
+    const exchangeName = 'rpc_products_exchange';
+    const exchangeOptions = { durable: true }; // replace with your exchange options
+    await channel.assertExchange(exchangeName, 'direct', exchangeOptions);
 
     await channel.assertQueue(queue, { durable: true });
-    channel.bindQueue(queue, "rpc_products_exchange", "");
+    channel.bindQueue(queue, exchangeName, "");
     channel.prefetch(1);
     console.log('Waiting for RPC requests...');
 
